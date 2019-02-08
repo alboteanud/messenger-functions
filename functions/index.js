@@ -1,12 +1,7 @@
 // @ts-check
 const functions = require('firebase-functions')
 var admin = require("firebase-admin")
-
-var serviceAccount = require("./serviceAccountKey.json")
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://my-project-1526043266253.firebaseio.com"
-})
+admin.initializeApp()
 
 exports.onCreateUser = functions.auth.user().onCreate(firebaseUser => {
     const keywords = getKeywords(firebaseUser.displayName, firebaseUser.email)
